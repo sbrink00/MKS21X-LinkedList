@@ -1,15 +1,22 @@
 class MyLinkedList{
-  private int size;
+  private int length;
   private Node start,end;
 
-  public MyLinkedList(Node s, Node e){
-    start = s;
-    end = e;
-    size = 2;
+  public MyLinkedList(){
+    start = null;
+    end = null;
+    length = 0;
+  }
+
+  public boolean add(Integer value){
+    Node n = new Node(value, end, null);
+    end.setNext(n);
+    length ++;
+    return true;
   }
 
   public int size(){
-    return this.size;
+    return length;
   }
 
 
@@ -21,8 +28,10 @@ class MyLinkedList{
 
   public String toString(){
     String output = "[";
-    for (Node i = start.getNextSibling(); i != end; i = i.getNextSibling()){
-      output += i.get() + ", ";
+    Node current = start.next();
+    while(current.getData() != null){
+      output += current.getData();
+      current = current.next();
     }
     return output.substring(0, output.length() - 2) + "]";
   }
