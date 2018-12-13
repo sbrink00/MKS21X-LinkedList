@@ -1,5 +1,5 @@
 public class Node{
-  private int data;
+  private Integer data;
   private Node next,prev;
 
   public Node(int val, Node behind, Node ahead){
@@ -8,20 +8,29 @@ public class Node{
     prev = behind;
   }
 
+  public Node next(){
+    return next;
+  }
+
+  public Node prev(){
+    return prev;
+  }
+
+  public void setNext(Node other){
+    next = other;
+  }
+
+  public void setPrev(Node other){
+    prev = other;
+  }
+
   public Integer getData(){
-    return this.data;
+    return data;
   }
 
   public Integer setData(Integer newVal){
-    this.data = newVal;
+    Integer output = data;
+    data = newVal;
+    return output;
   }
-
-  public Node getNextSibling(){
-    return this.next;
-  }
-
-  public Node getPreviousSibling(){
-    return this.prev;
-  }
-
 }
