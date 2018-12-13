@@ -22,4 +22,8 @@ public class Node{
     return this.next;
   }
 
+  public Node getPreviousSibling(){
+    return this.prev;
+  }
+
 }
