@@ -2,19 +2,17 @@ public class Node{
   private int data;
   private Node next,prev;
 
-  public Node(){}
-
   public Node(int val, Node behind, Node ahead){
     data = val;
     next = ahead;
     prev = behind;
   }
 
-  public int get(){
+  public Integer getData(){
     return this.data;
   }
 
-  public void set(int newVal){
+  public Integer setData(Integer newVal){
     this.data = newVal;
   }
 
