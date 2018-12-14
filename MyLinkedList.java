@@ -10,7 +10,6 @@ class MyLinkedList{
 
   public boolean add(Integer value){
     Node n = new Node(value, end, null);
-    end.setNext(n);
     length ++;
     return true;
   }
