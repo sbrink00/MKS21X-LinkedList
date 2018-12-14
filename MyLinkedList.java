@@ -37,6 +37,16 @@ class MyLinkedList{
     return current.getData();
   }
 
+  public Integer set(int index, Integer value){
+    int idx = 0;
+    Node current = start;
+    while (idx != index){
+      current = current.next();
+      idx ++;
+    }
+    return current.setData(value);
+  }
+
   public String toString(){
     if (length == 0) return "[]";
     String output = "[";
