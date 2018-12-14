@@ -27,7 +27,18 @@ class MyLinkedList{
     return length;
   }
 
+  public Integer get(int index){
+    int idx = 0;
+    Node current = start;
+    while (idx != index){
+      current = current.next();
+      idx ++;
+    }
+    return current.getData();
+  }
+
   public String toString(){
+    if (length == 0) return "[]";
     String output = "[";
     Node current = start;
     while (current != null){
