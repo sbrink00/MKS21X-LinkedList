@@ -9,7 +9,16 @@ class MyLinkedList{
   }
 
   public boolean add(Integer value){
-    Node n = new Node(value, end, null);
+    if (length == 0){
+      Node n = new Node(value, null, null);
+      start = n;
+      end = n;
+    }
+    else{
+      Node n = new Node(value, end, null);
+      end = n;
+      n.prev().setNext(n);
+    }
     length ++;
     return true;
   }
@@ -18,18 +27,11 @@ class MyLinkedList{
     return length;
   }
 
-
-  public boolean add(int value){
-    Node current = new Node(value, start, end);
-    size++;
-    return true;
-  }
-
   public String toString(){
     String output = "[";
-    Node current = start.next();
-    while(current.getData() != null){
-      output += current.getData();
+    Node current = start;
+    while (current != null){
+      output += current.getData() + ", ";
       current = current.next();
     }
     return output.substring(0, output.length() - 2) + "]";
