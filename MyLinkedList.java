@@ -10,20 +10,13 @@ class MyLinkedList{
 
   public boolean add(Integer value){
     Node n = new Node(value, end, null);
-    end.setNext(n);
+    n.prev().setNext(n);
     length ++;
     return true;
   }
 
   public int size(){
     return length;
-  }
-
-
-  public boolean add(int value){
-    Node current = new Node(value, start, end);
-    size++;
-    return true;
   }
 
   public String toString(){
