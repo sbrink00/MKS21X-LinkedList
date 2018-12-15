@@ -56,6 +56,17 @@ class MyLinkedList{
     return false;
   }
 
+  public int indexOf(Integer value){
+    Node current = start;
+    int idx = 0;
+    while(current != null){
+      if (current.getData() == value) return idx;
+      current = current.next();
+      idx++;
+    }
+    return -1;
+  }
+
   public String toString(){
     if (length == 0) return "[]";
     String output = "[";
