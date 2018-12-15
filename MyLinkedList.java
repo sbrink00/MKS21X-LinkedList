@@ -67,6 +67,19 @@ class MyLinkedList{
     return -1;
   }
 
+  public void add(int index, Integer value){
+    int idx = 0;
+    Node current = start;
+    while (idx != index){
+      current = current.next();
+      idx++;
+    }
+    Node n = new Node(value, current, current.prev());
+    n.prev().setNext(n);
+    n.next().setPrev(n);
+    length++;
+  }
+
   public String toString(){
     if (length == 0) return "[]";
     String output = "[";
