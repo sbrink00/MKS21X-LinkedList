@@ -8,6 +8,12 @@ class MyLinkedList{
     length = 0;
   }
 
+  public MyLinkedList(int[] ary){
+    for (int idx = 0; idx < ary.length; idx ++){
+      add(ary[idx]);
+    }
+  }
+
   public boolean add(Integer value){
     if (length == 0){
       Node n = new Node(value, null, null);
@@ -77,7 +83,7 @@ class MyLinkedList{
 
   public void add(int index, Integer value){
     String error = "index must be greater than 0 and less than the size";
-    if (index < 0 || index >= size()){
+    if (index < 0 || index > length){
       throw new IndexOutOfBoundsException(error);
     }
     if (index == length) add(value);
@@ -85,6 +91,7 @@ class MyLinkedList{
       Node n = new Node(value, null, start);
       start = n;
       n.next().setPrev(n);
+      length++;
     }
     else{
       int idx = 0;
@@ -101,6 +108,10 @@ class MyLinkedList{
   }
 
   public Integer remove(int index){
+    String error = "index must be greater than 0 and less than the size";
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException(error);
+    }
     Integer output = get(index);
     Node current = start;
     int idx = 0;
@@ -126,15 +137,21 @@ class MyLinkedList{
   }
 
   public boolean remove(Integer value){
+    boolean contains = false;
     Node current = start;
     int idx = 0;
-    while(current.getData() != value){
-      current = current.next();
-      idx++;
+    while(!contains && current != null){
+      if (current.getData() == value) contains = true;
+      else {
+        current = current.next();
+        idx++;
+      }
     }
-    remove(idx);
-    length--;
-    return true;
+    if (contains){
+      remove(idx);
+      return true;
+    }
+    else return false;
   }
 
   public String toString(){
