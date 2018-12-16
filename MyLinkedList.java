@@ -97,9 +97,32 @@ class MyLinkedList{
       idx ++;
     }
     Node n = current;
-    n.next().setPrev(n.prev());
-    n.prev().setNext(n.next());
+    if (current.next() == null){
+      current.prev().setNext(null);
+      end = current.prev();
+    }
+    else if(current.prev() == null){
+      current.next().setPrev(null);
+      start = current.next();
+    }
+    else{
+      n.next().setPrev(n.prev());
+      n.prev().setNext(n.next());
+    }
+    length--;
     return output;
+  }
+
+  public boolean remove(Integer value){
+    Node current = start;
+    int idx = 0;
+    while(current.getData() != value){
+      current = current.next();
+      idx++;
+    }
+    remove(idx);
+    length--;
+    return true;
   }
 
   public String toString(){
