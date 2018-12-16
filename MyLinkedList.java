@@ -88,6 +88,20 @@ class MyLinkedList{
     }
   }
 
+  public Integer remove(int index){
+    Integer output = get(index);
+    Node current = start;
+    int idx = 0;
+    while (idx != index){
+      current = current.next();
+      idx ++;
+    }
+    Node n = current;
+    n.next().setPrev(n.prev());
+    n.prev().setNext(n.next());
+    return output;
+  }
+
   public String toString(){
     if (length == 0) return "[]";
     String output = "[";
