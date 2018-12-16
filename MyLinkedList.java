@@ -28,6 +28,10 @@ class MyLinkedList{
   }
 
   public Integer get(int index){
+    String error = "index must be greater than 0 and less than the size";
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException(error);
+    }
     int idx = 0;
     Node current = start;
     while (idx != index){
@@ -38,6 +42,10 @@ class MyLinkedList{
   }
 
   public Integer set(int index, Integer value){
+    String error = "index must be greater than 0 and less than the size";
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException(error);
+    }
     int idx = 0;
     Node current = start;
     while (idx != index){
