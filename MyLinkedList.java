@@ -68,16 +68,24 @@ class MyLinkedList{
   }
 
   public void add(int index, Integer value){
-    int idx = 0;
-    Node current = start;
-    while (idx != index){
-      current = current.next();
-      idx++;
+    if (index == length) add(value);
+    else if (index == 0){
+      Node n = new Node(value, null, start);
+      start = n;
+      n.next().setPrev(n);
     }
-    Node n = new Node(value, current, current.prev());
-    n.prev().setNext(n);
-    n.next().setPrev(n);
-    length++;
+    else{
+      int idx = 0;
+      Node current = start;
+      while (idx != index){
+        current = current.next();
+        idx++;
+      }
+      Node n = new Node(value, current.prev(), current);
+      n.next().setPrev(n);
+      n.prev().setNext(n);
+      length++;
+    }
   }
 
   public String toString(){
