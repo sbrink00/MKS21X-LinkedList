@@ -76,6 +76,10 @@ class MyLinkedList{
   }
 
   public void add(int index, Integer value){
+    String error = "index must be greater than 0 and less than the size";
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException(error);
+    }
     if (index == length) add(value);
     else if (index == 0){
       Node n = new Node(value, null, start);
