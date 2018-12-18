@@ -22,6 +22,10 @@ class MyLinkedList{
     return end;
   }
 
+  public void setLength(int val){
+    length = val;
+  }
+
   public boolean add(Integer value){
     if (length == 0){
       Node n = new Node(value, null, null);
@@ -163,22 +167,39 @@ class MyLinkedList{
   }
 
   public void extend(MyLinkedList other){
-    end.setNext(other.start());
-    other.start().setPrev(end);
-    end = other.end();
+    Node temp = other.start();
+    Node temp2 = other.end();
+    end.setNext(temp);
+    temp.setPrev(end);
+    end = temp2;
     length += other.size();
-    //other.start() = new Node(null, null, other.end());
-    //other.end() = new Node(null, other.start(), null);
+    other = new MyLinkedList();
   }
 
   public String toString(){
     if (length == 0) return "[]";
     String output = "[";
     Node current = start;
-    while (current != null){
+    int idx = 0;
+    while (idx < length){
       output += current.getData() + ", ";
       current = current.next();
+      idx ++;
     }
     return output.substring(0, output.length() - 2) + "]";
   }
+
+  public String toStringBackwards(){
+    if (length == 0) return "[]";
+    String output = "[";
+    Node current = end;
+    int idx = 0;
+    while (idx < length){
+      output += current.getData() + ", ";
+      current = current.prev();
+      idx ++;
+    }
+    return output.substring(0, output.length() - 2) + "]";
+  }
+
 }
