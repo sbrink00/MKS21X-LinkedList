@@ -14,14 +14,6 @@ class MyLinkedList{
     }
   }
 
-  public Node start(){
-    return start;
-  }
-
-  public Node end(){
-    return end;
-  }
-
   public void setLength(int val){
     length = val;
   }
@@ -167,13 +159,16 @@ class MyLinkedList{
   }
 
   public void extend(MyLinkedList other){
-    Node temp = other.start();
-    Node temp2 = other.end();
+    Node temp = other.start;
+    Node temp2 = other.end;
     end.setNext(temp);
     temp.setPrev(end);
     end = temp2;
     length += other.size();
-    other = new MyLinkedList();
+    MyLinkedList javaBroken = new MyLinkedList();
+    other.start = javaBroken.start;
+    other.end = javaBroken.end;
+    other.length = javaBroken.length;
   }
 
   public String toString(){
