@@ -14,6 +14,14 @@ class MyLinkedList{
     }
   }
 
+  public Node start(){
+    return start;
+  }
+
+  public Node end(){
+    return end;
+  }
+
   public boolean add(Integer value){
     if (length == 0){
       Node n = new Node(value, null, null);
@@ -152,6 +160,15 @@ class MyLinkedList{
       return true;
     }
     else return false;
+  }
+
+  public void extend(MyLinkedList other){
+    end.setNext(other.start());
+    other.start().setPrev(end);
+    end = other.end();
+    length += other.size();
+    //other.start() = new Node(null, null, other.end());
+    //other.end() = new Node(null, other.start(), null);
   }
 
   public String toString(){
