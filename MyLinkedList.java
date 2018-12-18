@@ -14,10 +14,6 @@ class MyLinkedList{
     }
   }
 
-  public void setLength(int val){
-    length = val;
-  }
-
   public boolean add(Integer value){
     if (length == 0){
       Node n = new Node(value, null, null);
